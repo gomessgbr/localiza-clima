@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  color: #fff;
+}
+.main-square {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+
+  height: 25rem;
+  width: 50rem;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 3rem;
+}
