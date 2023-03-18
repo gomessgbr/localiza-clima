@@ -31,6 +31,29 @@ function App() {
       console.log(e);
     }
   }
+  async function fetchCityId() {
+    try {
+      const response = await axios.get(
+        "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name=São Paulo&state=SP&token=81c646284ba8db771b347f054a6d8dcd"
+      );
+      console.log(response.data[0].id);
+
+      // if (response) fetchWeatherClimatempo(response.data[0].id);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async function fetchWeatherClimatempo() {
+    try {
+      const response = await axios.get(
+        `http://apiadvisor.climatempo.com.br/api/v1/climate/temperature/locale/3477?token=81c646284ba8db771b347f054a6d8dcd`
+      );
+      console.log(response.data.id);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   // useEffect(() => {}, []);
 
@@ -42,7 +65,7 @@ function App() {
         <input
           type="button"
           value="Procurar Cidade"
-          onClick={() => fetchWeatherData("São Paulo")}
+          onClick={() => fetchWeatherClimatempo()}
         />
       </div>
     </div>
