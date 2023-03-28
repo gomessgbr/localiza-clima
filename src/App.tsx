@@ -12,6 +12,7 @@ interface IWeatherData {
 function App() {
   const [weatherData, setWeatherData] = useState<IWeatherData | null>(null);
   const [cityId, setCityId] = useState<number>();
+  const apiTokenClimaTempo = "81c646284ba8db771b347f054a6d8dcd";
 
   async function fetchWeatherData(city: string) {
     const apiKey = "573fcb64c8edd271cff36e292610168d";
@@ -47,15 +48,39 @@ function App() {
   async function fetchWeatherClimatempo() {
     try {
       const response = await axios.get(
-        `http://apiadvisor.climatempo.com.br/api/v1/climate/temperature/locale/3477?token=81c646284ba8db771b347f054a6d8dcd`
+        `http://apiadvisor.climatempo.com.br/api/v1/climate/temperature`,
+        {
+          params: {
+            id: 3477,
+            token: apiTokenClimaTempo,
+          },
+        }
       );
       console.log(response.data.id);
     } catch (e) {
       console.log(e);
     }
   }
-
-  // useEffect(() => {}, []);
+  //TODO É preciso registrar o id na cidade
+  async function registreMyTokenToIdCity() {
+    let localeId: [number];
+    localeId.push(3744);
+    try {
+      ("http://apiadvisor.climatempo.com.br/api-manager/user-token/:your-app-token/locales");
+      const response = await axios.put(
+        `http://apiadvisor.climatempo.com.br/api-manager/user-token/${apiTokenClimaTempo}/locale`,
+        {
+          localeId,
+        },
+        {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        }
+      );
+      console.log(response);
+    } catch (e) {
+      console.log("Deu ruim padrin", e);
+    }
+  }
 
   return (
     <div className="App">
@@ -65,7 +90,7 @@ function App() {
         <input
           type="button"
           value="Procurar Cidade"
-          onClick={() => fetchWeatherClimatempo()}
+          onClick={() => registreMyTokenToIdCity()}
         />
       </div>
     </div>
