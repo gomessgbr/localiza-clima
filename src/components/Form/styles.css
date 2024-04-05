@@ -1,0 +1,14 @@
+.form-area{
+  padding: 2px;
+  display : grid;
+  gap: 8px;
+}
+
+label{
+  display: grid;
+  gap: 8px;
+}
+
+input{
+  padding: 2px 0;
+}
