@@ -7,9 +7,8 @@ import { GeoDBCityResponse } from "../../../model/GeoDbApiModel";
 export function useGetLocale() {
 
   const [locale, setLocale] = useState<GeoDBCityResponse | null>(null);
-  const [enable, setEnable] = useState(false)
-  const getLocale = async() => {
-      const response = await fetch(`${GEO_DB_CITIES_API_URL}/cities?minPopulation=1000000&namePrefix=Sao Paulo`, {
+  const getLocale = async (citieName : string) => {
+      const response = await fetch(`${GEO_DB_CITIES_API_URL}/cities?minPopulation=1000000&namePrefix=${citieName}`, {
         headers: {
           'X-RapidAPI-Key' : `${RAPID_API_KEY}`,
           'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
@@ -21,13 +20,10 @@ export function useGetLocale() {
       return
   }
 
-  useEffect(() => {
-    enable && getLocale()
-  },[enable])
 
 
   return {
     locale,
-    setEnable
+    getLocale
   }
 }
