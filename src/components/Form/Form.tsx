@@ -14,11 +14,12 @@ interface IFormProps {
 }
 export function FormComponent({title}: IFormProps) {
   const id = useId()
-  const {locale, setEnable} = useGetLocale()
+  const {locale, getLocale} = useGetLocale()
 
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    setEnable(true)
+    const inputElement = event.currentTarget.elements[0] as HTMLInputElement;
+    getLocale(inputElement.value)
     event.preventDefault();
   }
   return (
@@ -28,7 +29,7 @@ export function FormComponent({title}: IFormProps) {
           {title}
         <input type="text" id={id} name="cityForm"  min={1} maxLength={50}  />
       </label>
-      <button form={id} type="submit" >Submit</button>
+      <button form={id} type="submit" >Pesquisar</button>
     </form>
 
    {
