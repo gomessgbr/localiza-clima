@@ -4,7 +4,7 @@ import { GeoDBCityResponse } from "../../../model/GeoDbApiModel";
 
 export function useGetLocale() {
   const [locale, setLocale] = useState<GeoDBCityResponse | null>(null);
-  const getLocale = async (citieName: string) : Promise<string> => {
+  const getLocale = async (citieName: string) => {
     try {
       const response = await fetch(
         `${GEO_DB_CITIES_API_URL}/cities?minPopulation=1000000&namePrefix=${citieName}`,
@@ -18,10 +18,8 @@ export function useGetLocale() {
 
       const responseJson = await response.json();
       setLocale(responseJson);
-      return 'Sucesso';
     } catch (e) {
-      console.log(e);
-      return 'Erro';
+      return
     }
   };
 
