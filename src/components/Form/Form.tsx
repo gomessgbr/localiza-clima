@@ -14,7 +14,7 @@ interface IFormProps {
 export function FormComponent({ title }: IFormProps) {
   const id = useId();
   const { locale, getLocale } = useGetLocale();
-  const { forecast } = useGetForecast();
+  const { forecast, getForecast } = useGetForecast();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,16 +34,24 @@ export function FormComponent({ title }: IFormProps) {
         </button>
       </form>
 
-      {locale && locale.data.length > 0 && !forecast && <ListCities data={locale.data} />}
-      {forecast &&
-      <Card
+      {locale && locale.data.length > 0 && !forecast && (
+        <ListCities
+          geoDbCity={locale}
+          onSubmit={({ latitude, longitude }) =>
+            getForecast(latitude, longitude)
+          }
+        />
+      )}
+      {forecast && (
+        <Card
           location={forecast.name}
           currently={forecast.main.temp}
           icon={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}@4x.png`}
           max={forecast.main.temp_max}
           min={forecast.main.temp_min}
           description={forecast.weather[0].description}
-        />}
+        />
+      )}
     </>
   );
 }
