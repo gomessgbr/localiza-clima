@@ -1,19 +1,23 @@
-import { useEffect } from "react";
-import { FormComponent } from "../../components";
-import { Forecast } from "../../components/Forecast/Forecast";
-import { useGetForecast } from "../../components/ListCities/hooks/useGetForecast";
+import { Card, FormComponent } from "../../components";
 
-import './styles.css'
-export function Home(){
+import "./styles.css";
+export function Home() {
   // const {forecast} = useGetForecast()
 
   return (
-    <div className="App">
+    <div className="main">
       <div className="main-square">
-        <h1>Localiza Clima</h1>
-        <FormComponent title="Insira a Cidade"/>
-           {/* <Forecast  /> */}
+        {/* <h1>Localiza Clima</h1> */}
+        {/* <FormComponent title="Insira a Cidade"/> */}
+        <Card
+          location="São Paulo"
+          currently="23"
+          icon="https://openweathermap.org/img/wn/01d@2x.png"
+          max="30"
+          min="20"
+          description="Partialmente nublado"
+        />
       </div>
     </div>
-  )
+  );
 }
