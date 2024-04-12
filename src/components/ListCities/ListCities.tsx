@@ -2,17 +2,17 @@ import { GeoDBCityResponse, GeoData } from "../../model/GeoDbApiModel";
 import { useGetForecast } from "./hooks/useGetForecast";
 
 import "./styles.css";
-export function ListCities({ data }: Omit<GeoDBCityResponse, "metadata">) {
-  const {getForecast} = useGetForecast()
 
-  const handleSelectedCity = async ({latitude, longitude}:GeoData) => {
-    await getForecast(latitude, longitude);
-  }
+interface IListCitiesProps {
+  geoDbCity: Omit<GeoDBCityResponse, "metadata">;
+  onSubmit: ({latitude, longitude}:GeoData) => void;
+}
+export function ListCities({onSubmit, geoDbCity}: IListCitiesProps) {
   return (
     <ol className="list-cities">
-      {data.map((cities) => (
+      {geoDbCity.data.map((cities) => (
         <li key={cities.id} >
-          <button type="button" onClick={() => handleSelectedCity(cities)}>
+          <button type="button" onClick={() => onSubmit(cities)}>
            {cities.city}, {cities.regionCode}
           </button>
         </li>
