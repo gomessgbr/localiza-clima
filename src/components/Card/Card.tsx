@@ -3,9 +3,9 @@ import "./styles.css";
 interface ICardProps {
   location: string;
   icon: string;
-  max: string;
-  min: string;
-  currently: string;
+  max: number;
+  min: number;
+  currently: number;
   description: string;
 }
 export function Card(ICardProps: ICardProps) {
