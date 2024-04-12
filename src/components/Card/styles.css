@@ -1,0 +1,32 @@
+.card-area {
+  display: flex;
+  flex-direction: column;
+  background: #D3DDE6;
+  padding:25px 15px ;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  gap: 3rem;
+}
+.card-forecast-area{
+  display:grid;
+  gap: 10px;
+  place-items: center;
+}
+.currently-forecast{
+  font-size: 40px;
+  font-family: "Inter";
+  font-weight: 600;
+
+}
+
+.max-min-area{
+  display: flex;
+  gap: 10px;
+}
+
+p{
+  font-family: "Inter";
+  font-size: 16px;
+  font-weight:500;
+}
