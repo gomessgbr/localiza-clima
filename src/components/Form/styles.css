@@ -21,7 +21,7 @@ input{
   font-weight:500;
 }
 
-button{
+button[type=submit]{
   font-family: "Inter";
   font-size: 16px;
   font-weight:600;
