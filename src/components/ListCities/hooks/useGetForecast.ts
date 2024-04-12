@@ -12,12 +12,11 @@ export function useGetForecast() {
       );
       const responseJson = await response.json();
       setForecast(responseJson);
-      return;
+      return ;
     } catch (e) {
-      console.log(e);
+      return
     }
   };
-
   return {
     getForecast,
     forecast,
