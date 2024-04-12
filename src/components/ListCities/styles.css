@@ -1,0 +1,24 @@
+
+.list-cities{
+  margin: 30px 0;
+  background-color:tranparent;
+  display: grid;
+  gap: 8px;
+}
+li{
+  list-style-type: none
+}
+
+button{
+  cursor: pointer;
+  min-width: 100%;
+  width: max-content;
+  padding: 10px;
+  border: none;
+  border-radius: 14px;
+  background-color: #F5F5F5;
+}
+
+button:hover{
+  background-color: #E0E0E0;
+}
