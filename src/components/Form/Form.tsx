@@ -1,4 +1,4 @@
-import { FormEvent, useId } from "react";
+import { FormEvent, useEffect, useId } from "react";
 
 import { useGetLocale } from "./hooks/useGetLocale";
 import { ListCities } from "../ListCities/ListCities";
@@ -17,11 +17,10 @@ export function FormComponent({ title }: IFormProps) {
   const { forecast } = useGetForecast();
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     const inputElement = event.currentTarget.elements[0] as HTMLInputElement;
     await getLocale(inputElement.value);
-    event.preventDefault();
   }
-
   return (
     <>
       <h1>Localiza Clima</h1>
