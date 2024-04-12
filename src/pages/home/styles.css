@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-.App {
+.main {
   width: 100vw;
   height: 100vh;
   background-color: #87CEEB;
@@ -14,13 +14,4 @@
 }
 
 
-.main-square {
-  display: flex;
-  flex-direction: column;
-  background: #D3DDE6;
-  padding:25px 15px ;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  gap: 3rem;
-}
+
